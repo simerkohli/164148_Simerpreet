@@ -1,0 +1,392 @@
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\simkohli>"C:\Program Files\MongoDB\Server\3.4\bin\mongo.exe"
+MongoDB shell version v3.4.10
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.4.10
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+        http://docs.mongodb.org/
+Questions? Try the support group
+        http://groups.google.com/group/mongodb-user
+Server has startup warnings:
+2018-12-27T12:20:20.349+0530 I CONTROL  [initandlisten]
+2018-12-27T12:20:20.350+0530 I CONTROL  [initandlisten] ** WARNING: Access contr
+ol is not enabled for the database.
+2018-12-27T12:20:20.353+0530 I CONTROL  [initandlisten] **          Read and wri
+te access to data and configuration is unrestricted.
+2018-12-27T12:20:20.355+0530 I CONTROL  [initandlisten]
+2018-12-27T12:20:20.357+0530 I CONTROL  [initandlisten] Hotfix KB2731284 or late
+r update is not installed, will zero-out data files.
+2018-12-27T12:20:20.359+0530 I CONTROL  [initandlisten]
+> db
+test
+> show dbs
+admin  0.000GB
+local  0.000GB
+> use mydatabase_practice
+switched to db mydatabase_practice
+> exit
+bye
+
+C:\Users\simkohli>"C:\Program Files\MongoDB\Server\3.4\bin\mongo.exe"
+MongoDB shell version v3.4.10
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.4.10
+Server has startup warnings:
+2018-12-27T12:20:20.349+0530 I CONTROL  [initandlisten]
+2018-12-27T12:20:20.350+0530 I CONTROL  [initandlisten] ** WARNING: Access contr
+ol is not enabled for the database.
+2018-12-27T12:20:20.353+0530 I CONTROL  [initandlisten] **          Read and wri
+te access to data and configuration is unrestricted.
+2018-12-27T12:20:20.355+0530 I CONTROL  [initandlisten]
+2018-12-27T12:20:20.357+0530 I CONTROL  [initandlisten] Hotfix KB2731284 or late
+r update is not installed, will zero-out data files.
+2018-12-27T12:20:20.359+0530 I CONTROL  [initandlisten]
+> use mongo_practice
+switched to db mongo_practice
+> db.createCollection('movies')
+{ "ok" : 1 }
+> db.movies.insert({)
+...
+...
+>
+>
+> db.movies.insert( { title : "Fight Club" , Writer : "Chuck Palahniuk" , year :
+ "1999" , actors : [ Brad Pitt , Edward Norton ] } );
+2018-12-27T12:38:18.022+0530 E QUERY    [thread1] SyntaxError: missing ] after e
+lement list @(shell):1:104
+> db.movies.insert( { title : "Fight Club" , Writer : "Chuck Palahniuk" , year :
+ "1999" , actors : [{ Brad Pitt} ,{ Edward Norton} ] } );
+2018-12-27T12:39:09.754+0530 E QUERY    [thread1] SyntaxError: missing : after p
+roperty id @(shell):1:105
+> db.movies.insert( { title : "Fight Club" , Writer : "Chuck Palahniuk" , year :
+ 1999 , actors : [ Brad Pitt , Edward Norton ] } );
+2018-12-27T12:40:32.068+0530 E QUERY    [thread1] SyntaxError: missing ] after e
+lement list @(shell):1:102
+> db.movies.insert( { title : "Fight Club" , Writer : "Chuck Palahniuk" , year :
+ 1999 , actors : [ "Brad Pitt" , "Edward Norton" ] } );
+WriteResult({ "nInserted" : 1 })
+>
+> db.movies.find();
+{ "_id" : ObjectId("5c247bcbe91fc29bb444592e"), "title" : "Fight Club", "Writer"
+ : "Chuck Palahniuk", "year" : 1999, "actors" : [ "Brad Pitt", "Edward Norton" ]
+ }
+> db.movies.find().pretty();
+{
+        "_id" : ObjectId("5c247bcbe91fc29bb444592e"),
+        "title" : "Fight Club",
+        "Writer" : "Chuck Palahniuk",
+        "year" : 1999,
+        "actors" : [
+                "Brad Pitt",
+                "Edward Norton"
+        ]
+}
+> db.movies.insert( { title : "Pulp Fiction" , Writer : "Quertin Tarantino" , ye
+ar : 1994 , actors : [ "John Travolta" , "Uma Thurman" ]});
+WriteResult({ "nInserted" : 1 })
+> db.movies.insert( { title : "Inglorious Basterds" , Writer : "Quertin Tarantin
+o" , year : 2009 , actors : [ "Brad Pitt" , "Diane Kruger", "Eli Roth" ]});
+WriteResult({ "nInserted" : 1 })
+> db.movies.insert( { title : "The Hobbit: An Unexpected Journey" , Writer : "J.
+R.R Tolkein" , year : 2012 , franchise : "The Hobbit"} );
+WriteResult({ "nInserted" : 1 })
+> db.movies.insert( { title : "The Hobbit: The Desolation of smauq" , Writer : "
+J.R.R Tolkein" , year : 2013 , franchise : "The Hobbit"} );
+WriteResult({ "nInserted" : 1 })
+> db.movies.insert( { title : "The Hobbit: The Battle of the Five Armies" , Writ
+er : "J.R.R Tolkein" , year : 2012 , franchise : "The Hobbit"} );
+WriteResult({ "nInserted" : 1 })
+> db.movies.find().pretty();
+{
+        "_id" : ObjectId("5c247bcbe91fc29bb444592e"),
+        "title" : "Fight Club",
+        "Writer" : "Chuck Palahniuk",
+        "year" : 1999,
+        "actors" : [
+                "Brad Pitt",
+                "Edward Norton"
+        ]
+}
+{
+        "_id" : ObjectId("5c247d0ae91fc29bb444592f"),
+        "title" : "Pulp Fiction",
+        "Writer" : "Quertin Tarantino",
+        "year" : 1994,
+        "actors" : [
+                "John Travolta",
+                "Uma Thurman"
+        ]
+}
+{
+        "_id" : ObjectId("5c247d75e91fc29bb4445930"),
+        "title" : "Inglorious Basterds",
+        "Writer" : "Quertin Tarantino",
+        "year" : 2009,
+        "actors" : [
+                "Brad Pitt",
+                "Diane Kruger",
+                "Eli Roth"
+        ]
+}
+{
+        "_id" : ObjectId("5c247e75e91fc29bb4445931"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "Writer" : "J.R.R Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit"
+}
+{
+        "_id" : ObjectId("5c247ea1e91fc29bb4445932"),
+        "title" : "The Hobbit: The Desolation of smauq",
+        "Writer" : "J.R.R Tolkein",
+        "year" : 2013,
+        "franchise" : "The Hobbit"
+}
+{
+        "_id" : ObjectId("5c247ec6e91fc29bb4445933"),
+        "title" : "The Hobbit: The Battle of the Five Armies",
+        "Writer" : "J.R.R Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit"
+}
+> db.movies.find(Writer : "Quertin Tarantino");
+2018-12-27T13:01:35.048+0530 E QUERY    [thread1] SyntaxError: missing ) after a
+rgument list @(shell):1:22
+> db.movies.find({Writer : "Quertin Tarantino"});
+{ "_id" : ObjectId("5c247d0ae91fc29bb444592f"), "title" : "Pulp Fiction", "Write
+r" : "Quertin Tarantino", "year" : 1994, "actors" : [ "John Travolta", "Uma Thur
+man" ] }
+{ "_id" : ObjectId("5c247d75e91fc29bb4445930"), "title" : "Inglorious Basterds",
+ "Writer" : "Quertin Tarantino", "year" : 2009, "actors" : [ "Brad Pitt", "Diane
+ Kruger", "Eli Roth" ] }
+> db.movies.find({Writer : "Quertin Tarantino"}).pretty();
+{
+        "_id" : ObjectId("5c247d0ae91fc29bb444592f"),
+        "title" : "Pulp Fiction",
+        "Writer" : "Quertin Tarantino",
+        "year" : 1994,
+        "actors" : [
+                "John Travolta",
+                "Uma Thurman"
+        ]
+}
+{
+        "_id" : ObjectId("5c247d75e91fc29bb4445930"),
+        "title" : "Inglorious Basterds",
+        "Writer" : "Quertin Tarantino",
+        "year" : 2009,
+        "actors" : [
+                "Brad Pitt",
+                "Diane Kruger",
+                "Eli Roth"
+        ]
+}
+> db.movies.find({actors : "Quertin Tarantino"}).pretty();
+> db.movies.find({actors : "Brad Pitt"}).pretty();
+{
+        "_id" : ObjectId("5c247bcbe91fc29bb444592e"),
+        "title" : "Fight Club",
+        "Writer" : "Chuck Palahniuk",
+        "year" : 1999,
+        "actors" : [
+                "Brad Pitt",
+                "Edward Norton"
+        ]
+}
+{
+        "_id" : ObjectId("5c247d75e91fc29bb4445930"),
+        "title" : "Inglorious Basterds",
+        "Writer" : "Quertin Tarantino",
+        "year" : 2009,
+        "actors" : [
+                "Brad Pitt",
+                "Diane Kruger",
+                "Eli Roth"
+        ]
+}
+> db.movies.find({franchise : "The Hobbit"}).pretty();
+{
+        "_id" : ObjectId("5c247e75e91fc29bb4445931"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "Writer" : "J.R.R Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit"
+}
+{
+        "_id" : ObjectId("5c247ea1e91fc29bb4445932"),
+        "title" : "The Hobbit: The Desolation of smauq",
+        "Writer" : "J.R.R Tolkein",
+        "year" : 2013,
+        "franchise" : "The Hobbit"
+}
+{
+        "_id" : ObjectId("5c247ec6e91fc29bb4445933"),
+        "title" : "The Hobbit: The Battle of the Five Armies",
+        "Writer" : "J.R.R Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit"
+}
+
+> db.movies.find().pretty();
+{
+        "_id" : ObjectId("5c247bcbe91fc29bb444592e"),
+        "title" : "Fight Club",
+        "Writer" : "Chuck Palahniuk",
+        "year" : 1999,
+        "actors" : [
+                "Brad Pitt",
+                "Edward Norton"
+        ]
+}
+{
+        "_id" : ObjectId("5c247d0ae91fc29bb444592f"),
+        "title" : "Pulp Fiction",
+        "Writer" : "Quertin Tarantino",
+        "year" : 1994,
+        "Samuel L" : {
+                " Jackson" : [
+                        "John Travolta",
+                        "Uma Thurman"
+                ]
+        }
+}
+{
+        "_id" : ObjectId("5c247d75e91fc29bb4445930"),
+        "title" : "Inglorious Basterds",
+        "Writer" : "Quertin Tarantino",
+        "year" : 2009,
+        "actors" : [
+                "Brad Pitt",
+                "Diane Kruger",
+                "Eli Roth"
+        ]
+}
+{
+        "_id" : ObjectId("5c247e75e91fc29bb4445931"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "Writer" : "J.R.R Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "A relucant hobbit, Bilbo, sets out to the Lonely Mountain
+with a spirited group of dwarves to reclaim their mountain home - and the gold w
+ithin it -from the dragon smaug"
+}
+{
+        "_id" : ObjectId("5c247ea1e91fc29bb4445932"),
+        "title" : "The Hobbit: The Desolation of smauq",
+        "Writer" : "J.R.R Tolkein",
+        "year" : 2013,
+        "franchise" : "The Hobbit",
+        "synopsis" : "A relucant hobbit, Bilbo, sets out to the Lonely Mountain
+with a spirited group of dwarves to reclaim their mountain home - and the gold w
+ithin it -from the dragon smaug"
+}
+{
+        "_id" : ObjectId("5c247ec6e91fc29bb4445933"),
+        "title" : "The Hobbit: The Battle of the Five Armies",
+        "Writer" : "J.R.R Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit"
+}
+> db.movies.findOne({"synopsis" : /.*Bilbo.*/});
+{
+        "_id" : ObjectId("5c247e75e91fc29bb4445931"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "Writer" : "J.R.R Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "A relucant hobbit, Bilbo, sets out to the Lonely Mountain
+with a spirited group of dwarves to reclaim their mountain home - and the gold w
+ithin it -from the dragon smaug"
+}
+> db.movies.findOne({"synopsis" : /.*Gandalf.*/});
+null
+> db.movies.findOne({"synopsis" : /.*dragon.*/});
+{
+        "_id" : ObjectId("5c247e75e91fc29bb4445931"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "Writer" : "J.R.R Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "A relucant hobbit, Bilbo, sets out to the Lonely Mountain
+with a spirited group of dwarves to reclaim their mountain home - and the gold w
+ithin it -from the dragon smaug"
+}
+> db.movies.find({"synopsis" : /.*dragon.*/});
+{ "_id" : ObjectId("5c247e75e91fc29bb4445931"), "title" : "The Hobbit: An Unexpe
+cted Journey", "Writer" : "J.R.R Tolkein", "year" : 2012, "franchise" : "The Hob
+bit", "synopsis" : "A relucant hobbit, Bilbo, sets out to the Lonely Mountain wi
+th a spirited group of dwarves to reclaim their mountain home - and the gold wit
+hin it -from the dragon smaug" }
+{ "_id" : ObjectId("5c247ea1e91fc29bb4445932"), "title" : "The Hobbit: The Desol
+ation of smauq", "Writer" : "J.R.R Tolkein", "year" : 2013, "franchise" : "The H
+obbit", "synopsis" : "A relucant hobbit, Bilbo, sets out to the Lonely Mountain
+with a spirited group of dwarves to reclaim their mountain home - and the gold w
+ithin it -from the dragon smaug" }
+> db.movies.find({"synopsis" : {$regex : { /.*dragon.*/,/.*gold.*/});
+...
+...
+> db.movies.findOne({"synopsis" : {$or : {/.*gold.*/ , /.*dragon.*/});
+...
+...
+> db.movies.find({"synopsis" : {$Or : {/.*dragon.*/ , /.*gold.*/}});
+...
+...
+> db.movies.remove({title : "Avatar"});
+WriteResult({ "nRemoved" : 0 })
+> db.movies.remove({title : "Pulp Fiction"});
+WriteResult({ "nRemoved" : 1 })
+> db.movies.find().pretty();
+{
+        "_id" : ObjectId("5c247bcbe91fc29bb444592e"),
+        "title" : "Fight Club",
+        "Writer" : "Chuck Palahniuk",
+        "year" : 1999,
+        "actors" : [
+                "Brad Pitt",
+                "Edward Norton"
+        ]
+}
+{
+        "_id" : ObjectId("5c247d75e91fc29bb4445930"),
+        "title" : "Inglorious Basterds",
+        "Writer" : "Quertin Tarantino",
+        "year" : 2009,
+        "actors" : [
+                "Brad Pitt",
+                "Diane Kruger",
+                "Eli Roth"
+        ]
+}
+{
+        "_id" : ObjectId("5c247e75e91fc29bb4445931"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "Writer" : "J.R.R Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "A relucant hobbit, Bilbo, sets out to the Lonely Mountain
+with a spirited group of dwarves to reclaim their mountain home - and the gold w
+ithin it -from the dragon smaug"
+}
+{
+        "_id" : ObjectId("5c247ea1e91fc29bb4445932"),
+        "title" : "The Hobbit: The Desolation of smauq",
+        "Writer" : "J.R.R Tolkein",
+        "year" : 2013,
+        "franchise" : "The Hobbit",
+        "synopsis" : "A relucant hobbit, Bilbo, sets out to the Lonely Mountain
+with a spirited group of dwarves to reclaim their mountain home - and the gold w
+ithin it -from the dragon smaug"
+}
+{
+        "_id" : ObjectId("5c247ec6e91fc29bb4445933"),
+        "title" : "The Hobbit: The Battle of the Five Armies",
+        "Writer" : "J.R.R Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit"
+}
+>
