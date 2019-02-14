@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" 
+"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+<bean id="question" class="com.simer.spring2.Question">
+<constructor-arg index="0" value="1" type="int"/>
+<constructor-arg index="1" value="Why?" type="java.lang.String"/>
+<constructor-arg index="2">
+<list>
+<value> one </value>
+<value> two </value>
+<value> three </value>
+</list>
+</constructor-arg>
+<constructor-arg index="3">
+<list>
+<value> only one </value>
+<value> only two </value>
+<value> only three </value>
+</list>
+</constructor-arg>
+<constructor-arg index="4">
+<map>
+<entry key="1" value="one"></entry> 
+<entry key="2" value="two"></entry> 
+<entry key="3" value="three"></entry> 
+</map>
+</constructor-arg>
+</bean>
+</beans>
