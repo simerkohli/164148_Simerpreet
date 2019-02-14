@@ -1,0 +1,9 @@
+documentation: 
+  baseurl: http://localhost
+  swagger: 
+    services:   
+      - 
+        name: live-scores
+        url: ${documentation.baseurl}:8087/v2/api-docs?group=live-scores
+        version: 2.0
+        

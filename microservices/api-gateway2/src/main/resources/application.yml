@@ -1,0 +1,11 @@
+
+
+zuul:
+  prefix: /api
+  routes:
+    score: 
+      path: /getscore/**
+      serviceId: scoreboard
+    ranks: 
+      path: /rank/**
+      serviceId: ranking-service
